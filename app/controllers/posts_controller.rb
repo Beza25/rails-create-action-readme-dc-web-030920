@@ -5,11 +5,22 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    # render :show
   end
 
   def new
     @post = Post.new
+
   end
 
   # add create method here
+  def create
+    
+    @post = Post.new
+    @post.title = params[:title]
+    @post.description = params[:description]
+    @post.save
+    redirect_to post_path(@post) #/posts/:id/show
+    # render :show
+  end
 end
